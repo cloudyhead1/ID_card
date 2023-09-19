@@ -12,13 +12,24 @@ router.post('/card', function(req,res){
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     type: req.body.type,
-    dataOfBirth: new Data(req.body.dataOfBirth),
-    addressLine1: neq.body.addressLine1,
-    addressLine2: neq.body.addressLine2,
+    dataOfBirth: new Date(req.body.dataOfBirth),
+    addressLine1: req.body.addressLine1,
+    addressLine2: req.body.addressLine2,
     city:req.body.city,
     state: req.body.state,
     zip: req.body.zip,
     accountNumber: createAccountNumber(),
-    currentDate: new Data()
+    currentDate: new Date()
   });
 })
+
+module.exports = router;
+
+function createAccountNumber() {
+  let accNum = ""
+  for (let i = 0; i<5; i++){
+    let temp = Math.floor(Math.random()*10);
+    accNum += temp;
+  }
+  return accNum;
+}

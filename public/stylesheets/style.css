@@ -15,11 +15,11 @@ a {
   flex: 1;
 }
 .label {
-  font- weight:hole;
+  font-weight:bold;
   margin-right: 8px;
 }
 .info-container{
-  gap-16px
+  gap: 16px;
 }
 .name-row {
   font-size: 20px;
