@@ -12,14 +12,15 @@ router.post('/card', function(req,res){
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     type: req.body.type,
-    dataOfBirth: new Date(req.body.dataOfBirth),
+    dateOfBirth: new Date(req.body.dateOfBirth),
     addressLine1: req.body.addressLine1,
     addressLine2: req.body.addressLine2,
     city:req.body.city,
     state: req.body.state,
     zip: req.body.zip,
     accountNumber: createAccountNumber(),
-    currentDate: new Date()
+    currentDate: new Date(),
+    cardClass: getCardClass(req.body.type)
   });
 })
 
@@ -32,4 +33,15 @@ function createAccountNumber() {
     accNum += temp;
   }
   return accNum;
+}
+function getCardClass(type){
+  if (type === "Premium"){
+    return "premium"
+  } else if (type ==="Standard") {
+    return "standard"
+  } else if (type ==="Bronze") {
+    return "bronze"
+  } else {
+    return ""
+  }
 }
